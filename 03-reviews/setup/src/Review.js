@@ -34,7 +34,15 @@ const handleRightButton = () => {
 }
 
 const handleRandomButton = () => {
-  setIndex(index);
+  
+  let newIndex = Math.floor(Math.random() * people.length);
+    newIndex = checkNumber(newIndex);
+    setIndex((index)=>{
+      if(newIndex === index){
+        return checkNumber(newIndex+1);
+      }
+      return newIndex;
+    })
 }
 
 
