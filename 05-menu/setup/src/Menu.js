@@ -1,13 +1,12 @@
 import React from 'react';
 
 const Menu = ({foods}) => {
-  {
     return <article className = "section-center">
       {
         foods.map((food)=>{
           const {id, title, price, img, desc} = food;
-          return <div className = "menu-item">
-            <img src={img} className = "photo"></img>
+          return <div key={id} className = "menu-item">
+            <img src={img} alt = {title} className = "photo"></img>
             <div className = "item-info">
               <header>
                 <h4>{title}</h4>
@@ -19,7 +18,6 @@ const Menu = ({foods}) => {
         })
       }
     </article>
-  }
 };
 
 export default Menu;

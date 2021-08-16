@@ -5,9 +5,9 @@ import items from './data';
 
 function App() {
 
-const allCategories = ['all', ...new Set(items.map((item)=>item.category))] ; 
-console.log(allCategories);
-const [categories, setCategories] = useState(allCategories);
+const categories = ['all', ...new Set(items.map((item)=>item.category))] ; 
+
+
 const [foods, setFoods] = useState(items);
 
 const filterItem = (category) => {
