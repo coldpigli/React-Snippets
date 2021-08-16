@@ -45,6 +45,10 @@ if(tours.length === 0){
   return <>
   <main>
   <h3 className = "title">Looks like you're not going on a tour</h3>
+  <section className="loading" >
+    <button className = "btn" onClick={()=>fetchTours()}>Refresh</button>
+  </section>
+  
   </main>
     
   </>
