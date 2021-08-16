@@ -43,7 +43,10 @@ if(isLoading === true){
 
 if(tours.length === 0){
   return <>
-    <h3 className = "title">Looks like you're not going on a tour</h3>
+  <main>
+  <h3 className = "title">Looks like you're not going on a tour</h3>
+  </main>
+    
   </>
 }
   return <> 
