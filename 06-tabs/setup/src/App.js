@@ -21,7 +21,7 @@ function App() {
   },[])
 
   if(isLoading){
-    return <div className = "section laoding">
+    return <div className = "section loading">
           <h1>Loading...</h1>
     </div> 
     
@@ -33,6 +33,15 @@ function App() {
         <h2>Experience</h2>
         <div className = "underline"></div>
       </div>
+      <div className = "jobs-center">
+        <div className="btn-container">
+          {
+            jobs.map((duty,index)=>{
+              const {} = duty;
+              return <button key={duty.id} className = "job-btn" onClick = {()=>{setValue(index)}} >{duty.company}</button>
+            })
+          }
+        </div>
       <article className = "job-info">
         <h3>{title}</h3>
         <h4>{company}</h4>
@@ -46,6 +55,8 @@ function App() {
           </div>
         })}
       </article>
+      </div>
+      
   </section>
 }
 
