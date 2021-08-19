@@ -6,14 +6,23 @@ const SingleColor = ({rgb,weight,index}) => {
   const [alert, setAlert] = useState(false);
   const bgc = rgb.join(',');
   const hex = rgbToHex(...rgb);
-  const clipboard = `$(hex)`;
+  
+
+  useEffect(() => {
+    const timeout = setTimeout(()=>{
+      setAlert(false);
+    },2000)
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [alert])
 
   const copyToClipboard = () => {
     setAlert(true);
     navigator.clipboard.writeText(hex);
   }
 
-    return <article className = {`color ${index > 20 && 'color-light'}`}
+    return <article className = {`color ${index > 10 && 'color-light'}`}
             style = {{backgroundColor: `rgb(${bgc})`}}
             onClick = {copyToClipboard}>
           <p className="percent-value">{weight}%</p>

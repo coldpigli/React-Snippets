@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import SingleColor from './SingleColor'
+
 
 import Values from 'values.js'
 
 function App() {
 
-  const [inputText, setInputText] = useState("#17255A")
+  const [inputText, setInputText] = useState("")
   const [error, setError] = useState(false);
-  const [colorList, setColorList] = useState([]);
+  const [colorList, setColorList] = useState(new Values("#17255A").all(10).map((color)=> {return {rgb: color.rgb, weight: color.weight}}));
 
+  
   
   const handleOnSubmit = (e) => {
     e.preventDefault();
     try{
       
-      let colors = new Values(inputText).all(5);
+      let colors = new Values(inputText).all(10);
       let rgbValues = colors.map((color)=> {return {rgb: color.rgb, weight: color.weight}});
       setColorList(rgbValues);
-      setError(true);
+      setError(false);
     }
     catch{
       setError(true);
@@ -26,11 +28,11 @@ function App() {
 
     return <>
       <section  className = "container">
-        <h3>Color-Bomb</h3>
+        <h3>Color Generator by Coldpigli</h3>
         <form onSubmit = {handleOnSubmit}>
           <input 
           type = 'text' 
-          placeholder = "#fffff" 
+          placeholder = "Enter hex here" 
           value={inputText}
           onChange = {(e)=>{setInputText(e.target.value)}}
           className = {`${(error) ? "error" : null}`}></input>
