@@ -5,17 +5,17 @@ import Values from 'values.js'
 
 function App() {
 
-  const [inputText, setInputText] = useState("")
+  const [inputText, setInputText] = useState("#17255A")
   const [error, setError] = useState(false);
   const [colorList, setColorList] = useState([]);
 
-
+  
   const handleOnSubmit = (e) => {
     e.preventDefault();
     try{
       
-      let colors = new Values(inputText).all(5);
-      let rgbValues = colors.map((color)=> color.rgb);
+      let colors = new Values(inputText).all(10);
+      let rgbValues = colors.map((color)=> {return {rgb: color.rgb, weight: color.weight}});
       setColorList(rgbValues);
     }
     catch{
@@ -39,7 +39,7 @@ function App() {
       <section className = "colors">
         {
           colorList.map((color,index)=>{
-           return <SingleColor key = {index} rgb={color}/>
+           return <SingleColor key = {index} rgb={color.rgb} weight = {color.weight} index={index}/>
           })
         }
       </section>
