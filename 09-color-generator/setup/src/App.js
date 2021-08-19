@@ -14,9 +14,10 @@ function App() {
     e.preventDefault();
     try{
       
-      let colors = new Values(inputText).all(10);
+      let colors = new Values(inputText).all(5);
       let rgbValues = colors.map((color)=> {return {rgb: color.rgb, weight: color.weight}});
       setColorList(rgbValues);
+      setError(true);
     }
     catch{
       setError(true);
