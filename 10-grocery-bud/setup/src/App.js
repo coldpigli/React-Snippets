@@ -12,6 +12,19 @@ function App() {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+
+  if(!text){
+    //show alert that name cannot be empty
+  }
+  else if (text && isEditing){
+    //allow to edit instead of adding to the list
+  }
+  else{
+    const newListItem = {id: new Date().getTime().toString(),
+                         title: text};
+    setAlert(true);
+    setListItems([...listItems,newListItem]);
+  }
 }
 
   return <section className = "section-center">
@@ -34,7 +47,7 @@ const handleSubmit = (e) => {
       </div>
     </form>
     <div className = "grocery-container">
-      <List/>
+      <List list = {listItems}/>
       <button className="clear-btn">Clear item</button>
     </div>
   </section>
