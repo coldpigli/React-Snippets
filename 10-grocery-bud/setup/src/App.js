@@ -4,18 +4,32 @@ import Alert from './Alert'
 
 function App() {
 
+  const [text, setText] = useState('');
+  const [listItems, setListItems] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
+  const [alert, setAlert] = useState({show: false, msg: '', type: ''});
+
 const handleSubmit = (e) => {
   e.preventDefault();
 }
 
   return <section className = "section-center">
     <form className="grocery-form" onSubmit = {handleSubmit}>
-      <Alert/>
+      {
+        alert.show&&<Alert/>
+      }
       <h3>Grocery List</h3>
       <div className = "form-control">
-        <input type="text"></input>
-        <button type ="submit" className = "submit-btn" placeholder = "e.g: Milk, Cheese">
-          {}
+        <input type="text"
+        className = "grocery"
+        placeholder = "e.g: Milk, Cheese"
+        value = {text}
+        onChange = {(e)=>{setText(e.target.value)}}
+        />
+        
+        <button type ="submit" className = "submit-btn" >
+          {isEditing? 'Edit':'Submit'}
         </button>
       </div>
     </form>
