@@ -4,13 +4,28 @@ import Alert from './Alert'
 
 function App() {
 
+  const getLocalStorage = () => {
+    let list = localStorage.getItem('list');
+    if(list){
+      return JSON.parse(list);
+    }
+    else{
+      return [];
+    }
+  }
+
   const [text, setText] = useState('');
-  const [listItems, setListItems] = useState([]);
+  const [listItems, setListItems] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({show: false, 
                                       msg: '', 
                                       type: ''});
+
+useEffect(() => {
+  
+  localStorage.setItem('list', JSON.stringify(listItems))
+}, [listItems])
 
 
 const removeItem = (id) => {
@@ -42,7 +57,9 @@ const handleSubmit = (e) => {
       })
     )
     setText('');
+    setEditID(null);
     setIsEditing(false);
+    alertFunction(true, "Edited Sucessfully", "success");
   }
   else{
     const newListItem = {id: new Date().getTime().toString(),
