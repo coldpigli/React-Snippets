@@ -12,6 +12,13 @@ function App() {
                                       msg: '', 
                                       type: ''});
 
+
+const removeItem = (id) => {
+  setListItems(listItems.filter((item)=>item.id!==id));
+  
+  setAlert(true,"Item Removed","success");
+}
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -56,7 +63,7 @@ const alertFunction = (show=false,msg="",type="") => {
       </div>
     </form>
     {listItems.length > 0 && (<div className = "grocery-container">
-      <List list = {listItems}/>
+      <List listItems = {listItems} removeItem = {removeItem} />
       <button className="clear-btn" onClick = {()=>{
         setListItems([]);
       }}>Clear item</button>
