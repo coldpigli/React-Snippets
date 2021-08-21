@@ -1,0 +1,1 @@
+Grocery-bud is a simple web app to add,edit and delete items to make a list
