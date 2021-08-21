@@ -57,7 +57,9 @@ const alertFunction = (show=false,msg="",type="") => {
     </form>
     {listItems.length > 0 && (<div className = "grocery-container">
       <List list = {listItems}/>
-      <button className="clear-btn">Clear item</button>
+      <button className="clear-btn" onClick = {()=>{
+        setListItems([]);
+      }}>Clear item</button>
     </div>)
     }
   </section>
